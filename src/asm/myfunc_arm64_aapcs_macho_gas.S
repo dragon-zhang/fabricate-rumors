@@ -55,11 +55,14 @@
 .globl _my_func
 .balign 16
 _my_func:
-	stp	x29, x30, [sp, #-16]!
-	mov	x29, sp
-	; use LR as param
+	sub	sp, sp, #32
+	stp	x29, x30, [sp, #16]
+	add	x29, sp, #16
+	str	x0, [sp, #8]
+	; todo use x0 as LR
 	str	w8, [sp, #0xa0]
 	mov	x0, x8
 	bl	_pln
-	ldp	x29, x30, [sp], #16
+	ldp	x29, x30, [sp, #16]
+	add	sp, sp, #32
 	ret
