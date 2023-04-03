@@ -1,6 +1,6 @@
 #[no_mangle]
-extern "C" fn pln() {
-    println!("hello");
+extern "C" fn pln(lr: u64) {
+    println!("hello {}", lr);
 }
 
 extern "C" {
@@ -9,7 +9,7 @@ extern "C" {
 }
 
 // extern "C" fn my_func() {
-//     pln();
+//     pln(63);
 // }
 
 //RUSTFLAGS="--emit asm" cargo build --release 获取优化后的汇编代码

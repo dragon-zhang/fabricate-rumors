@@ -55,11 +55,11 @@
 .globl _my_func
 .balign 16
 _my_func:
-;    ret
-;    todo how to do this ?
-;    bl _pln ;failed
 	stp	x29, x30, [sp, #-16]!
 	mov	x29, sp
+	; use LR as param
+	str	w8, [sp, #0xa0]
+	mov	x0, x8
 	bl	_pln
 	ldp	x29, x30, [sp], #16
 	ret
